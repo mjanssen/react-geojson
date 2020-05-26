@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 export default function ReactGeoJSON({
   apiKey,
-  center = {},
+  center = { lat: 0.0, lng: 0.0 },
   zoom = 10,
   existingArea = null,
   areaStyles = {},
@@ -29,7 +29,7 @@ export default function ReactGeoJSON({
       zoom,
       disableDefaultUI: true,
       clickableIcons: false,
-      mapStyles,
+      styles: mapStyles,
     });
 
     map.addListener('click', onMapClick);
