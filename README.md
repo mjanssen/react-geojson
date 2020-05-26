@@ -26,12 +26,12 @@ import ReactGeoJSON from 'react-geojson';
 
 ### Props
 
-`apiKey`\* - Your Google Maps api key.
-`ExistingArea` - An existing GeoJSON object to initially show.
-`onSave` - Callback function on save click. Gets the GeoJSON data as argument.
-`mapStyles` - Map styles, as defined on [mapstyle](https://mapstyle.withgoogle.com/).
-`areaStyles` - Polygon styles, documented on [Google Developers - Shapes#polygons](https://developers.google.com/maps/documentation/javascript/shapes#polygons)
-`zoom` - Initial zoom level of the map.
+`apiKey`\* - Your Google Maps api key.\
+`ExistingArea` - An existing GeoJSON object to initially show.\
+`onSave` - Callback function on save click. Gets the GeoJSON data as argument.\
+`mapStyles` - Map styles, as defined on [mapstyle](https://mapstyle.withgoogle.com/).\
+`areaStyles` - Polygon styles, documented on [Google Developers - Shapes#polygons](https://developers.google.com/maps/documentation/javascript/shapes#polygons)\
+`zoom` - Initial zoom level of the map.\
 `center` - Initial center point of the map.
 
 _\* means optional_
