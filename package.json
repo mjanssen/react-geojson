@@ -1,0 +1,34 @@
+{
+  "name": "react-geojson",
+  "version": "0.0.2",
+  "description": "Easy React component which allows you to create, configure and save different GeoJSON areas",
+  "source": "src/ReactGeoJSON.js",
+  "main": "dist/ReactGeoJSON.js",
+  "module": "dist/ReactGeoJSON.module.js",
+  "unpkg": "dist/ReactGeoJSON.umd.js",
+  "scripts": {
+    "prepublish": "npm run build",
+    "prebuild": "rm -rf ./dist",
+    "build": "microbundle --jsx React.createElement"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mjanssen/react-geojson.git"
+  },
+  "author": "Marnix Janssen <dev.marnix@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mjanssen/react-geojson/issues"
+  },
+  "homepage": "https://github.com/mjanssen/react-geojson#readme",
+  "devDependencies": {
+    "@types/googlemaps": "^3.39.6",
+    "@types/react": "^16.9.35",
+    "microbundle": "^0.12.0",
+    "react-dom": "^16.13.1",
+    "typescript": "^3.9.3"
+  },
+  "dependencies": {
+    "react": "^16.13.1"
+  }
+}
