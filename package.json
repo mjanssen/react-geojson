@@ -1,6 +1,6 @@
 {
   "name": "react-geojson",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Easy React component which allows you to create, configure and save different GeoJSON areas",
   "source": "src/ReactGeoJSON.js",
   "main": "dist/ReactGeoJSON.js",

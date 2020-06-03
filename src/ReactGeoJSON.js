@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 export default function ReactGeoJSON({
   apiKey,
   center = { lat: 0.0, lng: 0.0 },
+  onMapInitiated = () => {},
   zoom = 10,
   existingArea = null,
   areaStyles = {},
@@ -35,6 +36,8 @@ export default function ReactGeoJSON({
     map.addListener('click', onMapClick);
 
     setMap(map);
+
+    if (typeof onMapInitiated === 'function') onMapInitiated(map);
   }
 
   function onMapClick() {

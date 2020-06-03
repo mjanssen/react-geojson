@@ -15,6 +15,7 @@ import ReactGeoJSON from 'react-geojson';
 
 <ReactGeoJSON
   apiKey="..."
+  onMapInitiated={(map) => console.log('Map initiated', map)}
   existingArea={JSON.parse(localStorage.getItem('geojson'))}
   onSave={(data) => localStorage.setItem('geojson', JSON.stringify(data))}
   mapStyles={mapStyles}
@@ -27,6 +28,7 @@ import ReactGeoJSON from 'react-geojson';
 ### Props
 
 `apiKey`\* - Your Google Maps api key.\
+`onMapInitiated` - Callback for when the map has been initiated.\
 `ExistingArea` - An existing GeoJSON object to initially show.\
 `onSave` - Callback function on save click. Gets the GeoJSON data as argument.\
 `mapStyles` - Map styles, as defined on [mapstyle](https://mapstyle.withgoogle.com/).\
