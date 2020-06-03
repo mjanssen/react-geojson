@@ -277,7 +277,16 @@ export default function ReactGeoJSON({
   return (
     <div style={{ position: 'relative', height: '100%', width: '100%' }}>
       <div style={{ height: '100%', width: '100%' }} ref={mapRef} />
-      <span style={{ position: 'absolute', bottom: 20, right: 5, zIndex: 900 }}>
+      <span
+        style={{
+          position: 'absolute',
+          bottom: 20,
+          right: 5,
+          zIndex: 900,
+          boxShadow:
+            '0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -1px rgba(0,0,0,.06)',
+        }}
+      >
         {activeDrawing && activeDrawing.length > 0 && (
           <Action onClick={removeLastPoint}>undo</Action>
         )}
