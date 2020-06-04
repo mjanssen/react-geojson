@@ -205,7 +205,9 @@ export default function ReactGeoJSON({
       ...areaStyles,
     });
 
-    activePolygon.current.addListener('click', onPolygonClick);
+    activePolygon.current.addListener('click', () =>
+      onPolygonClick(activePolygon.current)
+    );
 
     activePolygon.current.setMap(map);
     polygons.current.push(activePolygon.current);
