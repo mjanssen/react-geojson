@@ -232,7 +232,7 @@ export default function ReactGeoJSON({
 
   function saveCurrentDrawing() {
     deselect();
-    if (polygons.current.length === 0) return;
+
     const areas = [];
     polygons.current.forEach((polygon) => {
       const p = polygon.getPath();
