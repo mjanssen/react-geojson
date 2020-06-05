@@ -34,7 +34,8 @@ import ReactGeoJSON from 'react-geojson';
 `mapStyles` - Map styles, as defined on [mapstyle](https://mapstyle.withgoogle.com/).\
 `areaStyles` - Polygon styles, documented on [Google Developers - Shapes#polygons](https://developers.google.com/maps/documentation/javascript/shapes#polygons)\
 `zoom` - Initial zoom level of the map.\
-`center` - Initial center point of the map.
+`center` - Initial center point of the map.\
+`isEditable` - Default true - disable or enable editing polygons shown on map.\
 
 _\* means optional_
 

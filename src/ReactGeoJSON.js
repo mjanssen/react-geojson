@@ -9,6 +9,7 @@ export default function ReactGeoJSON({
   areaStyles = {},
   onSave = () => {},
   mapStyles = [],
+  isEditable = true,
 }) {
   const [map, setMap] = useState(false);
   const mapRef = useRef(null);
@@ -79,9 +80,11 @@ export default function ReactGeoJSON({
         });
       }
 
-      polygon.addListener('click', () =>
-        onPolygonClick(polygon, { infoWindow, center })
-      );
+      if (isEditable) {
+        polygon.addListener('click', () =>
+          onPolygonClick(polygon, { infoWindow, center })
+        );
+      }
     },
     [map]
   );
@@ -103,6 +106,8 @@ export default function ReactGeoJSON({
   }
 
   function onPolygonClick(polygon, opts) {
+    if (isEditable === false) return;
+
     deselect();
     setPolygonSelected(true);
 
@@ -286,25 +291,27 @@ export default function ReactGeoJSON({
   return (
     <div style={{ position: 'relative', height: '100%', width: '100%' }}>
       <div style={{ height: '100%', width: '100%' }} ref={mapRef} />
-      <span
-        style={{
-          position: 'absolute',
-          bottom: 20,
-          right: 5,
-          zIndex: 900,
-          boxShadow:
-            '0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -1px rgba(0,0,0,.06)',
-        }}
-      >
-        {activeDrawing && activeDrawing.length > 0 && (
-          <Action onClick={removeLastPoint}>undo</Action>
-        )}
-        {polygonSelected && (
-          <Action onClick={removeSelectedPolygon}>remove</Action>
-        )}
-        <Action onClick={startEditing}>+</Action>
-        <Action onClick={saveCurrentDrawing}>save</Action>
-      </span>
+      {isEditable && (
+        <span
+          style={{
+            position: 'absolute',
+            bottom: 20,
+            right: 5,
+            zIndex: 900,
+            boxShadow:
+              '0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -1px rgba(0,0,0,.06)',
+          }}
+        >
+          {activeDrawing && activeDrawing.length > 0 && (
+            <Action onClick={removeLastPoint}>undo</Action>
+          )}
+          {polygonSelected && (
+            <Action onClick={removeSelectedPolygon}>remove</Action>
+          )}
+          <Action onClick={startEditing}>+</Action>
+          <Action onClick={saveCurrentDrawing}>save</Action>
+        </span>
+      )}
     </div>
   );
 }
