@@ -143,6 +143,9 @@ export default function ReactGeoJSON({
       return;
     }
 
+    clearAllPolygons();
+    polygons.current = [];
+
     existingArea.features.forEach((feature) => {
       const coords = getCoordsFromFeature(feature);
       drawPolygon(coords, feature.properties.Name);
@@ -217,6 +220,12 @@ export default function ReactGeoJSON({
 
     if (listenersEnabled.current === false) {
       addListeners();
+    }
+  }
+
+  function clearAllPolygons() {
+    for (let i = 0; i < polygons.current.length; i++) {
+      if (polygons.current[i]) polygons.current[i].setMap(null);
     }
   }
 
