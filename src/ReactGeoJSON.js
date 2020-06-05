@@ -249,9 +249,7 @@ export default function ReactGeoJSON({
       const p = polygon.getPath();
       if (typeof p === 'undefined') return;
 
-      areas.push(
-        p.getArray().map((area) => ({ lat: area.lat(), lng: area.lng() }))
-      );
+      areas.push(p.getArray().map((area) => [area.lng(), area.lat()]));
     });
 
     const feature = (coordinates) => ({
@@ -259,7 +257,7 @@ export default function ReactGeoJSON({
       properties: {},
       geometry: {
         type: 'Polygon',
-        coordinates: coordinates,
+        coordinates: [coordinates],
       },
     });
 
