@@ -9,7 +9,7 @@ export default function ReactGeoJSON({
   areaStyles = {},
   onSave = () => {},
   mapStyles = [],
-  isEditable = true,
+  editable = true,
 }) {
   const [map, setMap] = useState(false);
   const mapRef = useRef(null);
@@ -80,7 +80,7 @@ export default function ReactGeoJSON({
         });
       }
 
-      if (isEditable) {
+      if (editable) {
         polygon.addListener('click', () =>
           onPolygonClick(polygon, { infoWindow, center })
         );
@@ -106,7 +106,7 @@ export default function ReactGeoJSON({
   }
 
   function onPolygonClick(polygon, opts) {
-    if (isEditable === false) return;
+    if (editable === false) return;
 
     deselect();
     setPolygonSelected(true);
@@ -291,7 +291,7 @@ export default function ReactGeoJSON({
   return (
     <div style={{ position: 'relative', height: '100%', width: '100%' }}>
       <div style={{ height: '100%', width: '100%' }} ref={mapRef} />
-      {isEditable && (
+      {editable && (
         <span
           style={{
             position: 'absolute',
