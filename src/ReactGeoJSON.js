@@ -14,6 +14,8 @@ export default function ReactGeoJSON({
   const [map, setMap] = useState(false);
   const mapRef = useRef(null);
   const polygons = useRef([]);
+  const zoomLevel = useRef(zoom);
+  const centerPoint = useRef(center);
   const activePolygon = useRef(null);
   const listenersEnabled = useRef(false);
   const selectedPolygon = useRef(null);
@@ -48,11 +50,22 @@ export default function ReactGeoJSON({
   }
 
   useEffect(() => {
-    if (map) {
+    if (
+      map &&
+      center.lat !== centerPoint.current.lat &&
+      center.lng !== centerPoint.current.lng
+    ) {
       map.panTo(center);
-      map.setZoom(zoom);
+      centerPoint.current = center;
     }
-  }, [center, zoom]);
+  }, [center]);
+
+  useEffect(() => {
+    if (map && zoom !== zoomLevel.current) {
+      map.setZoom(zoom);
+      zoomLevel.current = zoom;
+    }
+  }, [zoom]);
 
   // Draw polygons that have been specified in the initial dataset
   const drawPolygon = useCallback(
