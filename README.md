@@ -39,7 +39,7 @@ Or if there are components that depend on the map, you can utilize render props.
   zoom={12}
   center={{ lat: 51.9246562, lng: 4.4763706 }}
 >
-  {(map) => <Component map={map} />}
+  {({ map }) => <Component map={map} />}
 </ReactGeoJSON>
 ```
 
