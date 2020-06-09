@@ -47,6 +47,13 @@ export default function ReactGeoJSON({
     }
   }
 
+  useEffect(() => {
+    if (map) {
+      map.panTo(center);
+      map.setZoom(zoom);
+    }
+  }, [center, zoom]);
+
   // Draw polygons that have been specified in the initial dataset
   const drawPolygon = useCallback(
     (coords, name = null) => {
