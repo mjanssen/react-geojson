@@ -10,6 +10,7 @@ export default function ReactGeoJSON({
   onSave = () => {},
   mapStyles = [],
   editable = true,
+  children = () => {},
 }) {
   const [map, setMap] = useState(false);
   const mapRef = useRef(null);
@@ -332,6 +333,7 @@ export default function ReactGeoJSON({
           <Action onClick={saveCurrentDrawing}>save</Action>
         </span>
       )}
+      {map && children({ map })}
     </div>
   );
 }

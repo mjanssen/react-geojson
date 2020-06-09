@@ -23,6 +23,24 @@ import ReactGeoJSON from 'react-geojson';
   zoom={12}
   center={{ lat: 51.9246562, lng: 4.4763706 }}
 />
+
+```
+
+Or if there are components that depend on the map, you can utilize render props.
+
+```
+<ReactGeoJSON
+  apiKey="..."
+  onMapInitiated={(map) => console.log('Map initiated', map)}
+  existingArea={JSON.parse(localStorage.getItem('geojson'))}
+  onSave={(data) => localStorage.setItem('geojson', JSON.stringify(data))}
+  mapStyles={mapStyles}
+  areaStyles={areaStyles}
+  zoom={12}
+  center={{ lat: 51.9246562, lng: 4.4763706 }}
+>
+  {(map) => <Component map={map} />}
+</ReactGeoJSON>
 ```
 
 ### Props
