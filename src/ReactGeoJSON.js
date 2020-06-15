@@ -11,6 +11,7 @@ export default function ReactGeoJSON({
   mapStyles = [],
   editable = true,
   children = () => {},
+  mapOptions = {},
 }) {
   const [map, setMap] = useState(false);
   const mapRef = useRef(null);
@@ -30,6 +31,7 @@ export default function ReactGeoJSON({
 
   function mapInitiated() {
     const map = new google.maps.Map(mapRef.current, {
+      ...mapOptions,
       center,
       zoom,
       disableDefaultUI: true,

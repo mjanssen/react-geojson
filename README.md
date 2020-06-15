@@ -45,17 +45,28 @@ Or if there are components that depend on the map, you can utilize render props.
 
 ### Props
 
-`apiKey`\* - Your Google Maps api key.\
-`onMapInitiated` - Callback for when the map has been initiated.\
-`ExistingArea` - An existing GeoJSON object to initially show.\
-`onSave` - Callback function on save click. Gets the GeoJSON data as argument.\
-`mapStyles` - Map styles, as defined on [mapstyle](https://mapstyle.withgoogle.com/).\
-`areaStyles` - Polygon styles, documented on [Google Developers - Shapes#polygons](https://developers.google.com/maps/documentation/javascript/shapes#polygons)\
-`zoom` - Initial zoom level of the map.\
-`center` - Initial center point of the map.\
-`editable` - Default true - disable or enable editing polygons shown on map.\
+- `apiKey`\* - Your Google Maps api key.\
+- `onMapInitiated` - Callback for when the map has been initiated.\
+- `ExistingArea` - An existing GeoJSON object to initially show.\
+- `onSave` - Callback function on save click. Gets the GeoJSON data as argument.\
+- `mapStyles` - Map styles, as defined on [mapstyle](https://mapstyle.withgoogle.com/).\
+- `areaStyles` - Polygon styles, documented on [Google Developers - Shapes#polygons](https://developers.google.com/maps/documentation/javascript/shapes#polygons)\
+- `zoom` - Initial zoom level of the map.\
+- `center` - Initial center point of the map.\
+- `editable` - Default true - disable or enable editing polygons shown on map.\
+- `mapOptions` - Possibility to add more map options to the Google Map.\
 
-_\* means optional_
+\_\* is required
+
+### Map options
+
+By passing `mapOptions` as a prop, you're able to change props that are being passed to the Google Maps api. The following props are always set and cannot be overwritten:
+
+- center - To set the center of the map.
+- zoom - To set the zoom level of the map.
+- disableDefaultUI - Set to true to disable the UI provided by Google Maps.
+- clickableIcons: - Set to false to disable clickable icons that are shown in the map.
+- styles - Map styles that are set by props.
 
 ### Licence
 
