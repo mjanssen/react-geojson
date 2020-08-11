@@ -17,6 +17,7 @@ import ReactGeoJSON from 'react-geojson';
   apiKey="..."
   onMapInitiated={(map) => console.log('Map initiated', map)}
   onPolygonsDrawn={(polygons) => console.log('Available polygons', polygons)}
+  scriptLibraries="geometry"
   existingArea={JSON.parse(localStorage.getItem('geojson'))}
   onSave={(data) => localStorage.setItem('geojson', JSON.stringify(data))}
   mapStyles={mapStyles}
@@ -57,6 +58,7 @@ Or if there are components that depend on the map, you can utilize render props.
 - `center` - Initial center point of the map.\
 - `editable` - Default true - disable or enable editing polygons shown on map.\
 - `mapOptions` - Possibility to add more map options to the Google Map.\
+- `scriptLibraries` - Possibility to add script libraries to the Google Maps url string (ie [Drawing tools](https://developers.google.com/maps/documentation/javascript/examples/drawing-tools) or [Geometries](https://developers.google.com/maps/documentation/javascript/examples/geometry-headings)).\
 
 \_\* is required
 

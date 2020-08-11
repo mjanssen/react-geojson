@@ -13,6 +13,7 @@ export default function ReactGeoJSON({
   children = () => {},
   onPolygonsDrawn = () => {},
   mapOptions = {},
+  scriptLibraries = null,
 }) {
   const [map, setMap] = useState(false);
   const mapRef = useRef(null);
@@ -217,7 +218,9 @@ export default function ReactGeoJSON({
   // Load the external google maps script
   useEffect(() => {
     const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=ReactGeoJSONInit${identifier.current}`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=ReactGeoJSONInit${
+      identifier.current
+    }${scriptLibraries !== null ? '&libraries=' + scriptLibraries : ''}`;
     script.defer = true;
     script.async = true;
 
