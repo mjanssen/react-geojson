@@ -11,6 +11,7 @@ export default function ReactGeoJSON({
   mapStyles = [],
   editable = true,
   children = () => {},
+  onPolygonsDrawn = () => {},
   mapOptions = {},
 }) {
   const [map, setMap] = useState(false);
@@ -178,6 +179,9 @@ export default function ReactGeoJSON({
       const coords = getCoordsFromFeature(feature);
       drawPolygon(coords, feature.properties.Name);
     });
+
+    if (typeof onPolygonsDrawn === 'function')
+      onPolygonsDrawn(polygons.current);
   }, [map, existingArea]);
 
   // Adding a new point to the active drawing set
