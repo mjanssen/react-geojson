@@ -66,6 +66,12 @@ export default function ReactGeoJSON({
   }, [center]);
 
   useEffect(() => {
+    if (map) {
+      map.setOptions({ styles: mapStyles });
+    }
+  }, [mapStyles]);
+
+  useEffect(() => {
     if (map && zoom !== zoomLevel.current) {
       map.setZoom(zoom);
       zoomLevel.current = zoom;
