@@ -236,10 +236,6 @@ export default function ReactGeoJSON({
 
     window[`ReactGeoJSONInit${identifier.current}`] = mapInitiated;
     document.head.appendChild(script);
-
-    return function cleanup() {
-      document.head.removeChild(script);
-    };
   }, []);
 
   function startEditing() {
