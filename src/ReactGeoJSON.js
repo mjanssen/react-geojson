@@ -223,7 +223,11 @@ export default function ReactGeoJSON({
 
   // Load the external google maps script
   useEffect(() => {
+    // Early return if script is already loaded once
+    if (document.querySelector('#react-geojson') !== null) return;
+
     const script = document.createElement('script');
+    script.id = 'react-geojson';
     script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=ReactGeoJSONInit${
       identifier.current
     }${scriptLibraries !== null ? '&libraries=' + scriptLibraries : ''}`;
