@@ -236,6 +236,18 @@ export default function ReactGeoJSON({
 
     window[`ReactGeoJSONInit${identifier.current}`] = mapInitiated;
     document.head.appendChild(script);
+
+    return function cleanup() {
+      const els = document.querySelectorAll(
+        "script[src*='maps.googleapis.com']"
+      );
+      for (i = 0; i < els.length; ++i) {
+        const el = els[i];
+        el.remove();
+      }
+
+      document.head.removeChild(script);
+    };
   }, []);
 
   function startEditing() {
